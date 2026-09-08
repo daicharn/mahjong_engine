@@ -1,9 +1,6 @@
-import { PlayerHand } from '../PlayerHand';
-import { PlayerContext } from '../PlayerContext';
-import { YakumanChecker } from './YakumanChecker';
-import { BlockHaisList } from '../BlockHaisList';
-import { YakuContext } from './YakuContext';
-import { NormalYakuChecker } from './NormalYakuChecker';
+import { YakumanChecker } from './YakumanChecker.js';
+import { YakuContext } from './YakuContext.js';
+import { NormalYakuChecker } from './NormalYakuChecker.js';
 
 export class YakuChecker {
     private context: YakuContext

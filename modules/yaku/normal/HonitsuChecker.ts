@@ -1,7 +1,6 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { HaiType } from '../../MahjongConsts';
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { HaiType } from '../../MahjongConsts.js';
 
 export class HonitsuChecker extends YakuCheckerBase{
     protected yakuName: string = "混一色";

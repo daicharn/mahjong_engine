@@ -1,8 +1,8 @@
-import { YakuContext } from '../yaku/YakuContext';
-import { TensuuCalculator } from './TensuuCalculator';
-import { FuCalculator } from './FuCalculator';
-import { FuDetail } from './FuDetail';
-import { ScoreResult } from './ScoreResult';
+import { YakuContext } from '../yaku/YakuContext.js';
+import { TensuuCalculator } from './TensuuCalculator.js';
+import { FuCalculator } from './FuCalculator.js';
+import { FuDetail } from './FuDetail.js';
+import { ScoreResult } from './ScoreResult.js';
 
 export class ScoreResolver{
     private readonly context: YakuContext;

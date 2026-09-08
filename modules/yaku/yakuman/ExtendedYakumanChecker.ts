@@ -1,5 +1,5 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { YakuContext } from '../YakuContext';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { YakuContext } from '../YakuContext.js';
 
 export abstract class ExtendedYakumanChecker extends YakuCheckerBase{
     protected abstract baseChecker: YakuCheckerBase;

@@ -1,5 +1,5 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class SankantsuChecker extends YakuCheckerBase{
     protected yakuName: string = "三槓子";

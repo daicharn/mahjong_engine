@@ -1,10 +1,10 @@
-import { Hai } from '../Hai';
-import { YakuContext } from './YakuContext';
-import { BlockHaisList } from '../BlockHaisList';
-import { MachiCalculator } from '../MachiCalculator';
-import { IMentsu } from '../IMentsu';
-import { BlockType, MeldType, HaiType } from '../MahjongConsts';
-import { MentsuAnalyzer } from '../MentsuAnalyzer';
+import { Hai } from '../Hai.js';
+import { YakuContext } from './YakuContext.js';
+import { BlockHaisList } from '../BlockHaisList.js';
+import { MachiCalculator } from '../MachiCalculator.js';
+import { IMentsu } from '../IMentsu.js';
+import { BlockType, MeldType, HaiType } from '../MahjongConsts.js';
+import { MentsuAnalyzer } from '../MentsuAnalyzer.js';
 
 export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;

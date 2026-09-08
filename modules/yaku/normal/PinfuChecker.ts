@@ -1,8 +1,8 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { BlockHais } from '../../BlockHais';
-import { MachiType } from '../../MahjongConsts';
-import { MentsuAnalyzer } from '../../MentsuAnalyzer';
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { BlockHais } from '../../BlockHais.js';
+import { MachiType } from '../../MahjongConsts.js';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer.js';
 
 export class PinfuChecker extends YakuCheckerBase{
     protected yakuName: string = "平和";

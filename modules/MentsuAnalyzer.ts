@@ -1,5 +1,5 @@
-import { IMentsu } from './IMentsu';
-import { Wind } from './tileDefs';
+import { IMentsu } from './IMentsu.js';
+import { Wind } from './tileDefs.js';
 
 export class MentsuAnalyzer {
     private readonly allMentsu: IMentsu[];

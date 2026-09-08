@@ -1,7 +1,7 @@
-import { Hai } from './Hai';
-import { BlockHais } from './BlockHais';
-import { BlockHaisList } from './BlockHaisList';
-import { BlockType, PAI_TYPE_NUM } from './MahjongConsts';
+import { Hai } from './Hai.js';
+import { BlockHais } from './BlockHais.js';
+import { BlockHaisList } from './BlockHaisList.js';
+import { BlockType, PAI_TYPE_NUM } from './MahjongConsts.js';
 
 export class BlockDivider{
     private readonly hais: Hai[];

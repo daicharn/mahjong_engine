@@ -1,5 +1,5 @@
-import { BlockHais } from './BlockHais';
-import { BlockType, MachiType } from './MahjongConsts';
+import { BlockHais } from './BlockHais.js';
+import { BlockType, MachiType } from './MahjongConsts.js';
 
 export class BlockHaisList {
     private readonly blocks: BlockHais[] = [];

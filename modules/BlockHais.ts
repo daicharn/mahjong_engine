@@ -1,7 +1,7 @@
-import { Hai } from "./Hai";
-import { BlockType } from "./MahjongConsts";
-import { IMentsu } from "./IMentsu";
-import { TILE, Wind } from "./tileDefs";
+import { Hai } from "./Hai.js";
+import { BlockType } from "./MahjongConsts.js";
+import { IMentsu } from "./IMentsu.js";
+import { TILE, Wind } from "./tileDefs.js";
 
 export class BlockHais implements IMentsu {
     private readonly type: BlockType;

@@ -1,6 +1,5 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class ShosangenChecker extends YakuCheckerBase{
     protected yakuName: string = "小三元";

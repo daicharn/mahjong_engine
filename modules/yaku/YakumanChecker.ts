@@ -1,6 +1,6 @@
-import { WinEvent } from '../MahjongConsts';
-import { YakuContext } from './YakuContext';
-import { YakumanCheckers } from './index';
+import { WinEvent } from '../MahjongConsts.js';
+import { YakuContext } from './YakuContext.js';
+import { YakumanCheckers } from './index.js';
 
 export class YakumanChecker{
     protected readonly context: YakuContext;

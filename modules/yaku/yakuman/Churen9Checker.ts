@@ -1,7 +1,7 @@
-import { ExtendedYakumanChecker } from './ExtendedYakumanChecker';
-import { YakuContext } from '../YakuContext';
-import { ChurenChecker } from './ChurenChecker';
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { ExtendedYakumanChecker } from './ExtendedYakumanChecker.js';
+import { YakuContext } from '../YakuContext.js';
+import { ChurenChecker } from './ChurenChecker.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class Churen9Checker extends ExtendedYakumanChecker{
     protected yakuName: string = "純正九蓮宝燈";

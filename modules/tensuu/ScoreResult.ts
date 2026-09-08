@@ -1,5 +1,5 @@
-import { FuDetail } from "./FuDetail";
-import { TensuuResult } from "./TensuuResult";
+import { FuDetail } from "./FuDetail.js";
+import { TensuuResult } from "./TensuuResult.js";
 
 export class ScoreResult{
     public readonly han: number;

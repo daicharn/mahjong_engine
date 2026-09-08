@@ -1,8 +1,7 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { MentsuAnalyzer } from '../../MentsuAnalyzer';
-import { Wind } from '../../tileDefs';
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer.js';
+import { Wind } from '../../tileDefs.js';
 
 export class KazehaiChecker extends YakuCheckerBase{
     protected yakuName: string;

@@ -1,6 +1,6 @@
-import { Hai } from "./Hai";
-import { WinEvent } from "./MahjongConsts";
-import { Wind } from "./tileDefs";
+import { Hai } from "./Hai.js";
+import { WinEvent } from "./MahjongConsts.js";
+import { Wind } from "./tileDefs.js";
 
 interface UserOptions {
     agariHai: Hai

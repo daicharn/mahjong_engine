@@ -1,6 +1,5 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { ChinitsuChecker } from '../normal/ChinitsuChecker';
-
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { ChinitsuChecker } from '../normal/ChinitsuChecker.js';
 
 export class ChurenChecker extends YakuCheckerBase{
     protected yakuName: string = "九蓮宝燈";

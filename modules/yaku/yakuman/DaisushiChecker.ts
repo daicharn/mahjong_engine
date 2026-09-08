@@ -1,6 +1,5 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { YakuContext } from '../YakuContext';
-
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { YakuContext } from '../YakuContext.js';
 
 export class DaisushiChecker extends YakuCheckerBase{
     protected yakuName: string = "大四喜";

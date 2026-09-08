@@ -1,4 +1,4 @@
-import { TensuuResult } from './TensuuResult';
+import { TensuuResult } from './TensuuResult.js';
 
 export class TensuuCalculator{
     static readonly BASE_LIMITS = [

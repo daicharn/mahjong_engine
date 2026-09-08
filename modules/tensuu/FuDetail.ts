@@ -1,4 +1,4 @@
-import { IMentsu } from "../IMentsu";
+import { IMentsu } from "../IMentsu.js";
 
 export class FuDetail{
     readonly name: string;

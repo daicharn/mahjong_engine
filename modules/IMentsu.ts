@@ -1,6 +1,6 @@
-import { BlockType, MeldType } from "./MahjongConsts";
-import { Hai } from "./Hai";
-import { Wind } from "./tileDefs";
+import { BlockType, MeldType } from "./MahjongConsts.js";
+import { Hai } from "./Hai.js";
+import { Wind } from "./tileDefs.js";
 
 export interface IMentsu {
     getType(): BlockType | MeldType;

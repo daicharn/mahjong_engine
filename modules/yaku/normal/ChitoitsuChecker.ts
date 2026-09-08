@@ -1,7 +1,6 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { BlockType } from '../../MahjongConsts';
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { BlockType } from '../../MahjongConsts.js';
 
 export class ChitoitsuChecker extends YakuCheckerBase{
     protected yakuName: string = "七対子";

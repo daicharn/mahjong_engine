@@ -1,4 +1,4 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class TsuisoChecker extends YakuCheckerBase{
     protected yakuName: string = "字一色";

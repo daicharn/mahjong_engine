@@ -1,6 +1,6 @@
-import { Hai } from './Hai';
-import { Meld } from './Meld';
-import { MeldType } from './MahjongConsts';
+import { Hai } from './Hai.js';
+import { Meld } from './Meld.js';
+import { MeldType } from './MahjongConsts.js';
 
 export class PlayerHand {
     private readonly tehai: Hai[];

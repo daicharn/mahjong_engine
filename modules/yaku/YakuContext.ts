@@ -1,8 +1,8 @@
-import { Hai } from '../Hai';
-import { Meld } from '../Meld';
-import { PlayerHand } from '../PlayerHand';
-import { PlayerContext } from '../PlayerContext';
-import { BlockHaisList } from '../BlockHaisList';
+import { Hai } from '../Hai.js';
+import { Meld } from '../Meld.js';
+import { PlayerHand } from '../PlayerHand.js';
+import { PlayerContext } from '../PlayerContext.js';
+import { BlockHaisList } from '../BlockHaisList.js';
 
 export class YakuContext {
     readonly hand: PlayerHand;

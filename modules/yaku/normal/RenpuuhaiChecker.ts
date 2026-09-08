@@ -1,6 +1,6 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { MentsuAnalyzer } from '../../MentsuAnalyzer';
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer.js';
 
 export class RenpuuhaiChecker extends YakuCheckerBase{
     protected yakuName: string;

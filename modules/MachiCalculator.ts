@@ -1,6 +1,6 @@
-import { Hai } from './Hai';
-import { BlockDivider } from './BlockDivider';
-import { PAI_TYPE_NUM } from './MahjongConsts';
+import { Hai } from './Hai.js';
+import { BlockDivider } from './BlockDivider.js';
+import { PAI_TYPE_NUM } from './MahjongConsts.js';
 
 export class MachiCalculator{
     private readonly hais: Hai[];

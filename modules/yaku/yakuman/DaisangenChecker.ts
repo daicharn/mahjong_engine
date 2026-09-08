@@ -1,5 +1,4 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class DaisangenChecker extends YakuCheckerBase{
     protected yakuName: string = "大三元";

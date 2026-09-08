@@ -1,4 +1,4 @@
-import {Meld} from "./Meld";
+import {Meld} from "./Meld.js";
 
 export class Melds {
     private readonly melds: Meld[] = [];

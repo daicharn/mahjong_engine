@@ -1,8 +1,8 @@
-import { BlockHais } from '../BlockHais';
-import { BlockType, MachiType, MeldType } from '../MahjongConsts';
-import { MentsuAnalyzer } from '../MentsuAnalyzer';
-import { YakuContext } from '../yaku/YakuContext';
-import { FuDetail } from './FuDetail';
+import { BlockHais } from '../BlockHais.js';
+import { BlockType, MachiType, MeldType } from '../MahjongConsts.js';
+import { MentsuAnalyzer } from '../MentsuAnalyzer.js';
+import { YakuContext } from '../yaku/YakuContext.js';
+import { FuDetail } from './FuDetail.js';
 
 type MentsuFuSpec = {
     yaochu: {name: string, fu: number};

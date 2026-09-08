@@ -1,7 +1,7 @@
-import { Hai } from './Hai';
-import { MeldType } from './MahjongConsts';
-import { IMentsu } from './IMentsu';
-import { TILE, Wind } from "./tileDefs";
+import { Hai } from './Hai.js';
+import { MeldType } from './MahjongConsts.js';
+import { IMentsu } from './IMentsu.js';
+import { TILE, Wind } from "./tileDefs.js";
 
 export class Meld implements IMentsu {
     private readonly hais: Hai[];

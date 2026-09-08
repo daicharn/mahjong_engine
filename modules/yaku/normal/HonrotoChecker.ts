@@ -1,8 +1,7 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { IMentsu } from '../../IMentsu';
-import { MentsuAnalyzer } from '../../MentsuAnalyzer';
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { IMentsu } from '../../IMentsu.js';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer.js';
 
 export class HonrotoChecker extends YakuCheckerBase{
     protected yakuName: string = "混老頭";

@@ -1,4 +1,4 @@
-import {Hai} from './Hai';
+import {Hai} from './Hai.js';
 
 export class Hais{
     private readonly hais: Hai[];

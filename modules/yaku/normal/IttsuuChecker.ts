@@ -1,8 +1,5 @@
-import { YakuContext } from '../YakuContext';
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { HaiType } from '../../MahjongConsts';
-
-
+import { YakuContext } from '../YakuContext.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class IttsuuChecker extends YakuCheckerBase{
     protected yakuName: string = "一気通貫";

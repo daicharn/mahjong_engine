@@ -1,7 +1,7 @@
-import { ExtendedYakumanChecker } from './ExtendedYakumanChecker';
-import { YakuContext } from '../YakuContext';
-import { KokushiChecker } from './KokushiChecker';
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { ExtendedYakumanChecker } from './ExtendedYakumanChecker.js';
+import { YakuContext } from '../YakuContext.js';
+import { KokushiChecker } from './KokushiChecker.js';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class Kokushi13Checker extends ExtendedYakumanChecker{
     protected yakuName: string = "国士無双13面待ち";

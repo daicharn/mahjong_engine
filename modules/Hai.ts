@@ -1,5 +1,5 @@
-import { HaiType } from "./MahjongConsts";
-import { TILE } from "./tileDefs";
+import { HaiType } from "./MahjongConsts.js";
+import { TILE } from "./tileDefs.js";
 
 export class Hai{
     private readonly id: number;

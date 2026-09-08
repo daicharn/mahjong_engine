@@ -1,8 +1,7 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { BlockType } from '../../MahjongConsts';
-import { SuankoChecker } from './SuankoChecker';
-import { YakuContext } from '../YakuContext';
-
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { BlockType } from '../../MahjongConsts.js';
+import { SuankoChecker } from './SuankoChecker.js';
+import { YakuContext } from '../YakuContext.js';
 
 export class SuankoTankiChecker extends YakuCheckerBase{
     protected yakuName: string = "四暗刻単騎";

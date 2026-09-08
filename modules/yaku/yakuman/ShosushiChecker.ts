@@ -1,4 +1,4 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
 
 export class ShosushiChecker extends YakuCheckerBase{
     protected yakuName: string = "小四喜";

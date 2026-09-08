@@ -1,5 +1,5 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
-import { BlockType } from '../../MahjongConsts';
+import { YakuCheckerBase } from '../YakuCheckerBase.js';
+import { BlockType } from '../../MahjongConsts.js';
 
 export class KokushiChecker extends YakuCheckerBase{
     protected yakuName: string = "国士無双";
