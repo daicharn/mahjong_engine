@@ -1,6 +1,6 @@
 {
   "name": "mahjong_engine",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "mahjong",
   "homepage": "https://github.com/daicharn/IsTheOrderaMahjong#readme",
   "bugs": {
@@ -12,13 +12,13 @@
   },
   "license": "ISC",
   "author": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/modules/index.js",
+  "types": "dist/modules/index.d.ts",
   "scripts": {
     "publish-public": "npx tsc && npm publish --access public",
     "test": "jest",
     "coverage": "jest --coverage",
-    "build": "npx tsc && npm run copy-assets",
+    "build": "npx tsc -p tsconfig.build.json",
     "copy-assets": "xcopy images dist\\images /E /I /Y"
   },
   "devDependencies": {

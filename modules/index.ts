@@ -12,3 +12,4 @@ export { TILE } from './tileDefs.js';
 export { ScoreResult } from './tensuu/ScoreResult.js';
 export { MachiCalculator } from './MachiCalculator.js';
 export * from './MahjongConsts.js';
+export type * from './tileDefs.js';
