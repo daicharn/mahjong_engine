@@ -35,6 +35,8 @@ import { PinfuChecker } from './normal/PinfuChecker.js';
 import { RenpuuhaiChecker } from './normal/RenpuuhaiChecker.js';
 import { YakuhaiChecker } from './normal/YakuhaiChecker.js';
 import { KazehaiChecker } from './normal/KazehaiChecker.js';
+import { RiichiChecker } from './normal/RiichiChecker.js';
+import { DaburiiChecker } from './normal/DaburiiChecker.js';
 
 export type YakuCheckerFactory =
     (context: YakuContext) => YakuCheckerBase;
@@ -80,4 +82,6 @@ export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new YakuhaiChecker(ctx, 32, "白"),
     ctx => new YakuhaiChecker(ctx, 33, "發"),
     ctx => new YakuhaiChecker(ctx, 34, "中"),
+    ctx => new RiichiChecker(ctx),
+    ctx => new DaburiiChecker(ctx),
 ];
