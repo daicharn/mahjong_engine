@@ -157,7 +157,7 @@ export abstract class YakuCheckerBase {
     protected countKantsu(): number {
         let kantsuCount = 0;
         for(const meld of this.context.melds){
-            if(meld.getType() === MeldType.ANKAN || meld.getType() === MeldType.MINKAN) kantsuCount++;
+            if(meld.isKantsu()) kantsuCount++;
         }
 
         return kantsuCount;
