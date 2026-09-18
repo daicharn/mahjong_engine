@@ -28,6 +28,7 @@ export type TehaiCase<TExpected> = {
     daburii?: boolean,
     ippatsu?: boolean,
     kuitan?: boolean,
+    dora?: number,
     expected: TExpected
 }
 

@@ -22,8 +22,11 @@ export class NormalYakuChecker{
         if(this.context.ctx.event === WinEvent.CHANKAN) yaku_map.set("槍槓", 1);
         if(this.context.ctx.event === WinEvent.HAITEI) yaku_map.set("海底摸月", 1);
         if(this.context.ctx.event === WinEvent.HOUTEI) yaku_map.set("河底撈魚", 1);
-        
 
+        if(yaku_map.size > 0 && this.context.ctx.dora > 0){
+            yaku_map.set("ドラ", this.context.ctx.dora);
+        }
+        
         return yaku_map;
     }
 }

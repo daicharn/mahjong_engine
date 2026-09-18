@@ -35,7 +35,8 @@ export class TehaiCaseRunner<T> {
             riichi: this.testCase.riichi ?? false,
             daburii: this.testCase.daburii ?? false,
             ippatsu: this.testCase.ippatsu ?? false,
-            kuitan: this.testCase.kuitan ?? false
+            kuitan: this.testCase.kuitan ?? false,
+            dora: this.testCase.dora ?? 0
         });
 
         return ctx;

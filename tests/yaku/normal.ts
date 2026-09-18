@@ -1043,4 +1043,56 @@ export const casesNormal: TehaiCase<Map<number, Map<string, number>>>[] = [
     hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
     expected: new Map([[0, new Map([["河底撈魚", 1]])]])
   },
+  {
+    name: "dora_1",
+    desc: "ドラ",
+    agariHai: 1,
+    isTsumo: false,
+    riichi: true,
+    melds: [] as MeldSpec[],
+    dora: 0,
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["立直", 1]])]])
+  },
+  {
+    name: "dora_2",
+    desc: "ドラ",
+    agariHai: 1,
+    isTsumo: false,
+    riichi: true,
+    melds: [] as MeldSpec[],
+    dora: 1,
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["立直", 1],["ドラ", 1]])]])
+  },
+  {
+    name: "dora_3",
+    desc: "ドラ",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    dora: 1,
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map()
+  },
+  {
+    name: "dora_4",
+    desc: "ドラ",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    dora: 2,
+    hais: [1,2,3,4,5,6,7,8,9,16,16,16,22,22],
+    expected: new Map([[0, new Map([["一気通貫", 2],["ドラ", 2]])]])
+  },
+  {
+    name: "dora_5",
+    desc: "ドラ",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    dora: 1,
+    hais: [1,1,1,3,3,3,5,5,5,8,8,8,9,9],
+    expected: new Map([[0, new Map([["四暗刻", 13]])]])
+  },
 ];

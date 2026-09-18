@@ -12,6 +12,7 @@ interface UserOptions {
     daburii?: boolean;
     ippatsu?: boolean;
     kuitan?: boolean;
+    dora?: number;
 }
 
 export class PlayerContext{
@@ -24,6 +25,7 @@ export class PlayerContext{
     daburii: boolean;
     ippatsu: boolean;
     kuitan: boolean;
+    dora: number;
 
     constructor(options: UserOptions) {
         this.agariHai = options.agariHai;
@@ -35,5 +37,6 @@ export class PlayerContext{
         this.daburii =  options.daburii ?? false;
         this.ippatsu =  options.ippatsu ?? false;
         this.kuitan =  options.kuitan ?? false;
+        this.dora =  options.dora ?? 0;
     }
 }
