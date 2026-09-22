@@ -2,6 +2,7 @@ export { Hai } from './Hai.js';
 export { Hais } from './Hais.js';
 export { Meld } from './Meld.js';
 export { Melds } from './Melds.js';
+export { BlockHais } from './BlockHais.js'
 export { BlockDivider } from './BlockDivider.js';
 export { PlayerHand } from './PlayerHand.js';
 export { PlayerContext } from './PlayerContext.js';
