@@ -1,5 +1,5 @@
 import { FuSpec, MeldSpec, TehaiCase } from '../testConsts';
-import { BlockType, MeldType, WinEvent } from "../../modules/MahjongConsts";
+import { BlockType, MachiType, MeldType, WinEvent } from "../../modules/MahjongConsts";
 import { TILE } from "../../modules/tileDefs"
 import { Meld } from '../../modules/Meld';
 import { BlockHais } from '../../modules/BlockHais';
@@ -48,7 +48,7 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     expected: [
       [{name: "符底", fu: 20},
        {name: "ツモ", fu: 2},
-       {name: "単騎待ち", fu: 2, mentsu: BlockHais.from(13, BlockType.JANTO)}]
+       {name: "単騎待ち", fu: 2, mentsu: BlockHais.from(13, BlockType.JANTO), machiType: MachiType.TANKI}]
     ] as FuSpec[][]
   },
   {
@@ -61,7 +61,7 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     expected: [
       [{name: "符底", fu: 20},
        {name: "ツモ", fu: 2},
-       {name: "辺張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU)}]
+       {name: "辺張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU), machiType: MachiType.PENCHAN}]
     ] as FuSpec[][]
   },
   {
@@ -74,7 +74,7 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     expected: [
       [{name: "符底", fu: 20},
        {name: "ツモ", fu: 2},
-       {name: "嵌張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU)}]
+       {name: "嵌張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU), machiType: MachiType.KANCHAN}]
     ] as FuSpec[][]
   },
   {

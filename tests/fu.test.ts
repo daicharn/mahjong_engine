@@ -34,7 +34,7 @@ testcases.forEach(testcase => {
             for(const specs of testcase.expected){
                 const details: FuDetail[] = [];
                 for(const spec of specs){
-                    details.push(new FuDetail(spec.name, spec.fu, spec.mentsu));
+                    details.push(new FuDetail(spec.name, spec.fu, spec.mentsu, spec.machiType));
                 }
                 expected.push(details);
             }
