@@ -15,7 +15,7 @@
   "main": "dist/modules/index.js",
   "types": "dist/modules/index.d.ts",
   "scripts": {
-    "publish": "npx tsc && npm publish --access public",
+    "publish-public": "npx tsc && npm publish --access public",
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "npx tsc -p tsconfig.build.json",
