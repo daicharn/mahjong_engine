@@ -46,7 +46,9 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     melds: [] as MeldSpec[],
     hais: [1,2,3,4,5,6,7,8,9,10,11,12,13,13],
     expected: [
-      [{name: "符底", fu: 20}, {name: "ツモ", fu: 2}, {name: "単騎待ち", fu: 2}]
+      [{name: "符底", fu: 20},
+       {name: "ツモ", fu: 2},
+       {name: "単騎待ち", fu: 2, mentsu: BlockHais.from(13, BlockType.JANTO)}]
     ] as FuSpec[][]
   },
   {
@@ -57,7 +59,9 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     melds: [] as MeldSpec[],
     hais: [1,2,3,4,5,6,7,8,9,10,11,12,13,13],
     expected: [
-      [{name: "符底", fu: 20}, {name: "ツモ", fu: 2}, {name: "辺張待ち", fu: 2}]
+      [{name: "符底", fu: 20},
+       {name: "ツモ", fu: 2},
+       {name: "辺張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU)}]
     ] as FuSpec[][]
   },
   {
@@ -68,7 +72,9 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     melds: [] as MeldSpec[],
     hais: [1,2,3,4,5,6,7,8,9,10,11,12,13,13],
     expected: [
-      [{name: "符底", fu: 20}, {name: "ツモ", fu: 2}, {name: "嵌張待ち", fu: 2}]
+      [{name: "符底", fu: 20},
+       {name: "ツモ", fu: 2},
+       {name: "嵌張待ち", fu: 2, mentsu: BlockHais.from(1, BlockType.SHUNTSU)}]
     ] as FuSpec[][]
   },
   {

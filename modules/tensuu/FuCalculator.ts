@@ -57,9 +57,9 @@ export class FuCalculator{
     private calcMachuFu(): FuDetail[]{
         const machiFu: FuDetail[] = [];
         const machiType = this.calcMachiType();
-        if(machiType.has(MachiType.TANKI)) machiFu.push(new FuDetail("単騎待ち", 2));
-        else if(machiType.has(MachiType.KANCHAN)) machiFu.push(new FuDetail("嵌張待ち", 2));
-        else if(machiType.has(MachiType.PENCHAN)) machiFu.push(new FuDetail("辺張待ち", 2));
+        if(machiType.has(MachiType.TANKI)) machiFu.push(new FuDetail("単騎待ち", 2, machiType.get(MachiType.TANKI)));
+        else if(machiType.has(MachiType.KANCHAN)) machiFu.push(new FuDetail("嵌張待ち", 2, machiType.get(MachiType.KANCHAN)));
+        else if(machiType.has(MachiType.PENCHAN)) machiFu.push(new FuDetail("辺張待ち", 2, machiType.get(MachiType.PENCHAN)));
 
         return machiFu;
     }
