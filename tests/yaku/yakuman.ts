@@ -240,6 +240,24 @@ export const casesYakuman: TehaiCase<Map<number, Map<string, number>>>[] = [
     expected: new Map([[0, new Map([["国士無双13面待ち", 26]])]])
   },
   {
+    name: "kokushi_4",
+    desc: "国士無双",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,8,9,10,18,19,27,28,29,30,31,32,33,34],
+    expected: new Map()
+  },
+  {
+    name: "kokushi_5",
+    desc: "国士無双",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,8,8,10,18,19,27,28,29,30,31,32,33,34],
+    expected: new Map()
+  },
+  {
     name: "churen_1",
     desc: "九蓮宝燈",
     agariHai: 9,
