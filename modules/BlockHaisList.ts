@@ -63,23 +63,23 @@ export class BlockHaisList {
         return MachiType.RYANMEN;
     }
 
-    calcMachiType(haiId: number): Set<MachiType> {
-        const machiTypeSet = new Set<MachiType>();
+    calcMachiType(haiId: number): Map<MachiType, BlockHais> {
+        const machiTypeSet = new Map<MachiType, BlockHais>();
         for(const block of this.blocks){
             if(!block.containsHai(haiId)) continue;
 
             switch(block.getType()){
 
                 case BlockType.JANTO:
-                    machiTypeSet.add(MachiType.TANKI);
+                    machiTypeSet.set(MachiType.TANKI, block);
                     break;
 
                 case BlockType.KOTSU:
-                    machiTypeSet.add(MachiType.SHANPON);
+                    machiTypeSet.set(MachiType.SHANPON, block);
                     break;
                 
                 case BlockType.SHUNTSU:
-                    machiTypeSet.add(this.calcShuntsuMachiType(block, haiId));
+                    machiTypeSet.set(this.calcShuntsuMachiType(block, haiId), block);
                     break;
             }
         }

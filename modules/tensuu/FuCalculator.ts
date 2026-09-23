@@ -111,7 +111,7 @@ export class FuCalculator{
         ];
     }
 
-    private calcMachiType(): Set<MachiType>{
+    private calcMachiType(): Map<MachiType, BlockHais>{
         const agariHaiId = this.context.ctx.agariHai.getId();
         return this.context.block.calcMachiType(agariHaiId);
     }
