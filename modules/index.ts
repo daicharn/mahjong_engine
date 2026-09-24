@@ -13,5 +13,6 @@ export { TILE } from './tileDefs.js';
 export { ScoreResult } from './tensuu/ScoreResult.js';
 export { MachiCalculator } from './MachiCalculator.js';
 export { BlockHaisList } from './BlockHaisList.js';
+export { ShantenCalculator } from './ShantenCalculator.js';
 export * from './MahjongConsts.js';
 export type * from './tileDefs.js';
