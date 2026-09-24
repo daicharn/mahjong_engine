@@ -101,9 +101,6 @@ export class ShantenCalculator {
                 next[firstIndex]--;
                 next[firstIndex + 1]--;
 
-                let blockType: BlockType;
-                if(hai.num === 1 || hai.num === 8) blockType = BlockType.TAATSU_PENCHAN;
-                else blockType = BlockType.TAATSU_RYANMEN;
                 dfs(next, mentsuCount, taatsuCount + 1, toitsuCount);
             }
             //嵌張ターツ
