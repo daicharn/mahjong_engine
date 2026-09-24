@@ -1,9 +1,7 @@
 import { BlockDivider } from "./BlockDivider.js";
-import { BlockHais } from "./BlockHais.js";
-import { BlockHaisList } from "./BlockHaisList.js";
 import { Hai } from "./Hai.js";
 import { MachiCalculator } from "./MachiCalculator.js";
-import { BlockType, PAI_TYPE_NUM } from "./MahjongConsts.js";
+import { PAI_TYPE_NUM } from "./MahjongConsts.js";
 
 export class ShantenCalculator {
     private readonly hais: Hai[];
