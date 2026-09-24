@@ -1,6 +1,8 @@
+import { BlockDivider } from "./BlockDivider.js";
 import { BlockHais } from "./BlockHais.js";
 import { BlockHaisList } from "./BlockHaisList.js";
 import { Hai } from "./Hai.js";
+import { MachiCalculator } from "./MachiCalculator.js";
 import { BlockType, PAI_TYPE_NUM } from "./MahjongConsts.js";
 
 export class ShantenCalculator {
@@ -32,7 +34,18 @@ export class ShantenCalculator {
         return 8 - 2 * (4 - requiredMentsuCount + mentsuCount) - usableTaatsu - usableJanto;
     }
 
+    private isTenpai(): boolean {
+        return new MachiCalculator(this.hais).calculate().length > 0;
+    }
+
+    private isAgari(): boolean {
+        return new BlockDivider(this.hais).divide().length > 0;
+    }
+
     private calculateNormal(): number {
+        if(this.isAgari()) return -1;
+        if(this.isTenpai()) return 0;
+
         let minShanten = 8;
         const blockhaislist: BlockHaisList = new BlockHaisList();
         const requiredMentsuCount = Math.floor(this.hais.length / 3);
