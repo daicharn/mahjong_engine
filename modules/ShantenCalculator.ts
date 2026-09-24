@@ -47,11 +47,9 @@ export class ShantenCalculator {
         if(this.isTenpai()) return 0;
 
         let minShanten = 8;
-        const blockhaislist: BlockHaisList = new BlockHaisList();
         const requiredMentsuCount = Math.floor(this.hais.length / 3);
         const dfs = (
             arr: number[],
-            blocks: BlockHaisList,
             mentsuCount: number,
             taatsuCount: number,
             toitsuCount: number,
@@ -75,19 +73,13 @@ export class ShantenCalculator {
             if(count >= 2){
                 let next = [...arr];
                 next[firstIndex] -= 2;
-
-                blocks.push(new BlockHais([hai, hai], BlockType.JANTO));
-                dfs(next, blocks, mentsuCount, taatsuCount, toitsuCount + 1);
-                blocks.pop();
+                dfs(next, mentsuCount, taatsuCount, toitsuCount + 1);
             }
             //刻子
             if(count >= 3){
                 let next = [...arr];
                 next[firstIndex] -= 3;
-
-                blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
-                dfs(next, blocks, mentsuCount + 1, taatsuCount, toitsuCount);
-                blocks.pop();
+                dfs(next, mentsuCount + 1, taatsuCount, toitsuCount);
             }
             //順子
             const hasShuntsuTiles =
@@ -95,24 +87,16 @@ export class ShantenCalculator {
                 arr[firstIndex + 2] > 0;
             const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
             if(isShuntsuCandidate && hasShuntsuTiles){
-                const h2 = new Hai(firstIndex + 2);
-                const h3 = new Hai(firstIndex + 3);
-
                 let next = [...arr];
                 next[firstIndex]--;
                 next[firstIndex + 1]--;
                 next[firstIndex + 2]--;
-
-                blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
-                dfs(next, blocks, mentsuCount + 1, taatsuCount, toitsuCount);
-                blocks.pop();
+                dfs(next, mentsuCount + 1, taatsuCount, toitsuCount);
             }
             //両面、辺張ターツ
             const hasRyanmenTiles = arr[firstIndex + 1] > 0;
             const isRyanmenCandidate = hai.isNumberHai() && hai.num <= 8;
             if(isRyanmenCandidate && hasRyanmenTiles){
-                const h2 = new Hai(firstIndex + 1);
-
                 let next = [...arr];
                 next[firstIndex]--;
                 next[firstIndex + 1]--;
@@ -120,32 +104,25 @@ export class ShantenCalculator {
                 let blockType: BlockType;
                 if(hai.num === 1 || hai.num === 8) blockType = BlockType.TAATSU_PENCHAN;
                 else blockType = BlockType.TAATSU_RYANMEN;
-                blocks.push(new BlockHais([hai, h2], blockType));
-                dfs(next, blocks, mentsuCount, taatsuCount + 1, toitsuCount);
-                blocks.pop();
+                dfs(next, mentsuCount, taatsuCount + 1, toitsuCount);
             }
             //嵌張ターツ
             const hasKanchanTiles = arr[firstIndex + 2] > 0;
             const isKanchanCandidate = hai.isNumberHai() && hai.num <= 7;
             if(isKanchanCandidate && hasKanchanTiles){
-                const h2 = new Hai(firstIndex + 2);
-
                 let next = [...arr];
                 next[firstIndex]--;
                 next[firstIndex + 2]--;
-
-                blocks.push(new BlockHais([hai, h2], BlockType.TAATSU_KANCHAN));
-                dfs(next, blocks, mentsuCount, taatsuCount + 1, toitsuCount);
-                blocks.pop();
+                dfs(next, mentsuCount, taatsuCount + 1, toitsuCount);
             }
 
             //孤立牌
             const next = [...arr];
             next[firstIndex]--;
-            dfs(next, blocks, mentsuCount, taatsuCount, toitsuCount);
+            dfs(next, mentsuCount, taatsuCount, toitsuCount);
         }
 
-        dfs(this.counts, blockhaislist, 0, 0, 0);
+        dfs(this.counts, 0, 0, 0);
 
         return minShanten;
     }
