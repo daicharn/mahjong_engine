@@ -21,20 +21,14 @@ export class ShantenCalculator {
         return Math.min(normal, chitoi, kokushi);
     }
 
-    private calculateShanten(blocks: BlockHaisList, requiredMentsuCount: number): number {
-        const mentsuCount = blocks.getBlockHais().filter(
-            block => block.isShuntsu() || block.isKotsuOrKantsu()
-        ).length;
-        const taatsuCount = blocks.getBlockHais().filter(
-            block => block.isTaatsu()
-        ).length;
-        const toitsuCount = blocks.getBlockHais().filter(
-            block => block.isJanto()
-        ).length;
-
+    private calculateShanten(
+        requiredMentsuCount: number,
+        mentsuCount: number,
+        taatsuCount: number,
+        toitsuCount: number,
+    ): number {
         const usableTaatsu = Math.min(taatsuCount, Math.max(0, requiredMentsuCount - mentsuCount));
         const usableJanto = Math.min(toitsuCount, 1);
-
         return 8 - 2 * (4 - requiredMentsuCount + mentsuCount) - usableTaatsu - usableJanto;
     }
 
@@ -42,11 +36,21 @@ export class ShantenCalculator {
         let minShanten = 8;
         const blockhaislist: BlockHaisList = new BlockHaisList();
         const requiredMentsuCount = Math.floor(this.hais.length / 3);
-
-        const dfs = (arr: number[], blocks: BlockHaisList) => {
+        const dfs = (
+            arr: number[],
+            blocks: BlockHaisList,
+            mentsuCount: number,
+            taatsuCount: number,
+            toitsuCount: number,
+        ) => {
             const firstIndex = arr.findIndex(count => count > 0);
             if(firstIndex === -1) {
-                const shanten = this.calculateShanten(blocks, requiredMentsuCount);
+                const shanten = this.calculateShanten(
+                    requiredMentsuCount,
+                    mentsuCount,
+                    taatsuCount,
+                    toitsuCount
+                );
                 minShanten = Math.min(minShanten, shanten);
                 return;
             }
@@ -60,7 +64,7 @@ export class ShantenCalculator {
                 next[firstIndex] -= 2;
 
                 blocks.push(new BlockHais([hai, hai], BlockType.JANTO));
-                dfs(next, blocks);
+                dfs(next, blocks, mentsuCount, taatsuCount, toitsuCount + 1);
                 blocks.pop();
             }
             //刻子
@@ -69,7 +73,7 @@ export class ShantenCalculator {
                 next[firstIndex] -= 3;
 
                 blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
-                dfs(next, blocks);
+                dfs(next, blocks, mentsuCount + 1, taatsuCount, toitsuCount);
                 blocks.pop();
             }
             //順子
@@ -87,7 +91,7 @@ export class ShantenCalculator {
                 next[firstIndex + 2]--;
 
                 blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
-                dfs(next, blocks);
+                dfs(next, blocks, mentsuCount + 1, taatsuCount, toitsuCount);
                 blocks.pop();
             }
             //両面、辺張ターツ
@@ -104,7 +108,7 @@ export class ShantenCalculator {
                 if(hai.num === 1 || hai.num === 8) blockType = BlockType.TAATSU_PENCHAN;
                 else blockType = BlockType.TAATSU_RYANMEN;
                 blocks.push(new BlockHais([hai, h2], blockType));
-                dfs(next, blocks);
+                dfs(next, blocks, mentsuCount, taatsuCount + 1, toitsuCount);
                 blocks.pop();
             }
             //嵌張ターツ
@@ -118,17 +122,17 @@ export class ShantenCalculator {
                 next[firstIndex + 2]--;
 
                 blocks.push(new BlockHais([hai, h2], BlockType.TAATSU_KANCHAN));
-                dfs(next, blocks);
+                dfs(next, blocks, mentsuCount, taatsuCount + 1, toitsuCount);
                 blocks.pop();
             }
 
             //孤立牌
             const next = [...arr];
             next[firstIndex]--;
-            dfs(next, blocks);
+            dfs(next, blocks, mentsuCount, taatsuCount, toitsuCount);
         }
 
-        dfs(this.counts, blockhaislist);
+        dfs(this.counts, blockhaislist, 0, 0, 0);
 
         return minShanten;
     }
