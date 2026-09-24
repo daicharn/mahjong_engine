@@ -62,58 +62,58 @@ export class BlockDivider{
 
         const dfs = (arr: number[], blocks: BlockHaisList) => {
             const expectedBlocks = Math.floor(this.hais.length / 3);
+
             if(blocks.length() === expectedBlocks + 1 && blocks.isStandardHand(expectedBlocks)){
                 results.push(blocks.clone());
                 return;
             }
 
-            for(let j = 0; j < counts.length; j++){
-                const count = arr[j];
-                const hai = new Hai(j + 1);
+            const firstIndex = arr.findIndex(count => count > 0);
+            if(firstIndex === -1) return;
 
-                //刻子の処理
-                if(count >= 3){
-                    let next = [...arr];
-                    next[j] -= 3;
+            const count = arr[firstIndex];
+            const hai = new Hai(firstIndex + 1);
 
-                    blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
-                    dfs(next, blocks);
-                    blocks.pop();
-                }
-                //順子の処理
-                const hasTiles = arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0;
-                const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
-                if(isShuntsuCandidate && hasTiles){
-                    const h2 = new Hai(j + 2);
-                    const h3 = new Hai(j + 3);
+            //刻子の処理
+            if(count >= 3){
+                let next = [...arr];
+                next[firstIndex] -= 3;
 
-                    let next = [...arr];
-                    next[j]--;
-                    next[j + 1]--;
-                    next[j + 2]--;
+                blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
+                dfs(next, blocks);
+                blocks.pop();
+            }
+            //順子の処理
+            const hasTiles =
+                arr[firstIndex + 1] > 0 &&
+                arr[firstIndex + 2] > 0;
+            const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
+            if(isShuntsuCandidate && hasTiles){
+                const h2 = new Hai(firstIndex + 2);
+                const h3 = new Hai(firstIndex + 3);
 
-                    blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
-                    dfs(next, blocks);
-                    blocks.pop();
-                }
+                let next = [...arr];
+                next[firstIndex]--;
+                next[firstIndex + 1]--;
+                next[firstIndex + 2]--;
+
+                blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
+                dfs(next, blocks);
+                blocks.pop();
             }
         };
 
         //通常の面子の組み合わせの判定
-        for(let i = 0; i < this.hais.length; i++){
-            const firstid = this.hais[i].getId();
+        for(let i = 0; i < counts.length; i++){
+            if(counts[i] < 2) continue;
 
-            if(i > 0 && this.hais[i].getId() === this.hais[i - 1].getId()) continue;
+            const hai = new Hai(i + 1);
+            const next = [...counts];
+            next[i] -= 2;
 
-            //雀頭の処理
-            if(this.hais.filter(h => h.getId() === firstid).length >= 2){
-                let next = [...counts];
-                next[firstid - 1] -= 2;
-
-                blockhaislist.push(new BlockHais([this.hais[i].clone(), this.hais[i].clone()], BlockType.JANTO));
-                dfs(next, blockhaislist);
-                blockhaislist.pop();
-            }
+            blockhaislist.push(new BlockHais([hai.clone(), hai.clone()], BlockType.JANTO));
+            dfs(next, blockhaislist);
+            blockhaislist.pop();
         }
 
         //七対子の判定
