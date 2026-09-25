@@ -9,7 +9,7 @@ export class MachiCalculator{
         this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
     }
 
-    calcCandidate(hais: Hai[]): number[] {
+    private calcCandidate(hais: Hai[]): number[] {
         const candidate = new Set<number>();
 
         for (const hai of hais) {
@@ -26,7 +26,7 @@ export class MachiCalculator{
         return [...candidate].sort((a, b) => a - b);
     }
 
-    genYaochuCandidate(): number[] {
+    private genYaochuCandidate(): number[] {
         const candidate: number[] = [];
 
         for(let i = 1; i <= PAI_TYPE_NUM; i++){

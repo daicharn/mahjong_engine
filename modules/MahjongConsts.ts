@@ -24,7 +24,11 @@ export enum BlockType{
     KOTSU = "kotsu",
     SHUNTSU = "shuntsu",
     CHITOI = "chitoi",
-    KOKUSHI = "kokushi"
+    KOKUSHI = "kokushi",
+    TAATSU_RYANMEN = "taatsu_ryanmen",
+    TAATSU_KANCHAN = "taatsu_kanchan",
+    TAATSU_PENCHAN = "taatsu_penchan",
+    SINGLE = "single"
 }
 //待ちのタイプ
 export enum MachiType{
