@@ -6,6 +6,7 @@ export class ScoreResult{
     public readonly fuBasic: number;
     public readonly fuCeiled: number;
     public readonly tensuu: TensuuResult;
+    public readonly hanName: string;
     public readonly fuDetail: FuDetail[];
 
     constructor(
@@ -13,12 +14,14 @@ export class ScoreResult{
         fuBasic: number,
         fuCeiled: number,
         tensuu: TensuuResult,
+        hanName: string,
         fuDetail: FuDetail[]
     ){
         this.han = han;
         this.fuBasic = fuBasic;
         this.fuCeiled = fuCeiled;
         this.tensuu = tensuu;
+        this.hanName = hanName;
         this.fuDetail = fuDetail;
     }
 }
