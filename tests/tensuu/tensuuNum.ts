@@ -289,4 +289,32 @@ export const caseNum: TensuuNumCase[] = [
     fusuu: 20,
     expected: new TensuuResult(16000, 96000, 64000, 32000, {oya:32000, ko:16000})
   },
+  {
+    name: "hon39",
+    desc: "39翻",
+    honsuu: 39,
+    fusuu: 20,
+    expected: new TensuuResult(24000, 144000, 96000, 48000, {oya:48000, ko:24000})
+  },
+  {
+    name: "hon52",
+    desc: "52翻",
+    honsuu: 52,
+    fusuu: 20,
+    expected: new TensuuResult(32000, 192000, 128000, 64000, {oya:64000, ko:32000})
+  },
+  {
+    name: "hon65",
+    desc: "65翻",
+    honsuu: 65,
+    fusuu: 20,
+    expected: new TensuuResult(40000, 240000, 160000, 80000, {oya:80000, ko:40000})
+  },
+  {
+    name: "hon78",
+    desc: "78翻",
+    honsuu: 78,
+    fusuu: 20,
+    expected: new TensuuResult(48000, 288000, 192000, 96000, {oya:96000, ko:48000})
+  },
 ];

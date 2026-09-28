@@ -41,4 +41,11 @@ export type TensuuNumCase = {
     expected: TensuuResult;
 }
 
+export type hanNameCase = {
+    name: string,
+    desc: string,
+    han: number,
+    expected: string
+}
+
 export type Score = {han: number, fuBasic: number, fuCeiled: number};

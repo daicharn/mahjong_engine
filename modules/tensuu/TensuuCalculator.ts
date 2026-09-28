@@ -2,12 +2,16 @@ import { TensuuResult } from './TensuuResult.js';
 
 export class TensuuCalculator{
     static readonly BASE_LIMITS = [
-        {han: 26, base: 16000 },
-        {han: 13, base: 8000 },
-        {han: 11, base: 6000 },
-        {han: 8,  base: 4000 },
-        {han: 6,  base: 3000 },
-        {han: 5,  base: 2000 },
+        {han: 78, base: 48000, name: "六倍役満"},
+        {han: 65, base: 40000, name: "五倍役満"},
+        {han: 52, base: 32000, name: "四倍役満"},
+        {han: 39, base: 24000, name: "三倍役満"},
+        {han: 26, base: 16000, name: "二倍役満"},
+        {han: 13, base: 8000, name: "役満"},
+        {han: 11, base: 6000, name: "三倍満"},
+        {han: 8,  base: 4000, name: "倍満"},
+        {han: 6,  base: 3000, name: "跳満"},
+        {han: 5,  base: 2000, name: "満貫"},
     ];
 
     static calcBaseTensuu(han: number, fu: number): number{
