@@ -17,7 +17,6 @@ export class NormalYakuChecker{
             if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
         }
         
-        if(this.context.ctx.ippatsu) yaku_map.set("一発", 1);
         if(this.context.ctx.event === WinEvent.RINSHAN) yaku_map.set("嶺上開花", 1);
         if(this.context.ctx.event === WinEvent.CHANKAN) yaku_map.set("槍槓", 1);
         if(this.context.ctx.event === WinEvent.HAITEI) yaku_map.set("海底摸月", 1);

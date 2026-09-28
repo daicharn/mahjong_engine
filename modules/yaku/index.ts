@@ -37,51 +37,56 @@ import { YakuhaiChecker } from './normal/YakuhaiChecker.js';
 import { KazehaiChecker } from './normal/KazehaiChecker.js';
 import { RiichiChecker } from './normal/RiichiChecker.js';
 import { DaburiiChecker } from './normal/DaburiiChecker.js';
+import { IppatsuChecker } from './normal/IppatsuChecker.js';
 
 export type YakuCheckerFactory =
     (context: YakuContext) => YakuCheckerBase;
 
 export const YakumanCheckers: YakuCheckerFactory[] = [
+    ctx => new DaisangenChecker(ctx),
+    ctx => new SuankoChecker(ctx),
     ctx => new TsuisoChecker(ctx),
-    ctx => new ChinrotoChecker(ctx),
     ctx => new RyuisoChecker(ctx),
+    ctx => new ChinrotoChecker(ctx),
+    ctx => new KokushiChecker(ctx),
+    ctx => new ShosushiChecker(ctx),
     ctx => new SukantsuChecker(ctx),
     ctx => new ChurenChecker(ctx),
-    ctx => new Churen9Checker(ctx),
-    ctx => new SuankoChecker(ctx),
+
     ctx => new SuankoTankiChecker(ctx),
-    ctx => new KokushiChecker(ctx),
     ctx => new Kokushi13Checker(ctx),
+    ctx => new Churen9Checker(ctx),
     ctx => new DaisushiChecker(ctx),
-    ctx => new ShosushiChecker(ctx),
-    ctx => new DaisangenChecker(ctx),
 ];
 
 export const NormalYakuCheckers: YakuCheckerFactory[] = [
+    ctx => new RiichiChecker(ctx),
+    ctx => new DaburiiChecker(ctx),
+    ctx => new IppatsuChecker(ctx),
+    ctx => new MenzenTsumoChecker(ctx),
+    ctx => new PinfuChecker(ctx),
+    ctx => new TanyaoChecker(ctx),
+
     ctx => new ChinitsuChecker(ctx),
     ctx => new HonitsuChecker(ctx),
     ctx => new JunchanChecker(ctx),
-    ctx => new HonchanChecker(ctx),
-    ctx => new HonrotoChecker(ctx),
     ctx => new RyanpekoChecker(ctx),
     ctx => new ChitoitsuChecker(ctx),
-    ctx => new SanankoChecker(ctx),
-    ctx => new ToitoiChecker(ctx),
-    ctx => new IipekoChecker(ctx),
-    ctx => new ShosangenChecker(ctx),
+    ctx => new HonchanChecker(ctx),
+    ctx => new HonrotoChecker(ctx),
     ctx => new SanshokuChecker(ctx),
     ctx => new DoukouChecker(ctx),
-    ctx => new IttsuuChecker(ctx),
-    ctx => new TanyaoChecker(ctx),
     ctx => new SankantsuChecker(ctx),
-    ctx => new MenzenTsumoChecker(ctx),
-    ctx => new PinfuChecker(ctx),
+    ctx => new ToitoiChecker(ctx),
+    ctx => new SanankoChecker(ctx),
+    ctx => new ShosangenChecker(ctx),
+    ctx => new IttsuuChecker(ctx),
+    ctx => new IipekoChecker(ctx),
+
     ctx => new RenpuuhaiChecker(ctx),
     ctx => new KazehaiChecker(ctx, "自風牌", ctx.ctx.playerWind, ctx.ctx.roundWind),
     ctx => new KazehaiChecker(ctx, "場風牌", ctx.ctx.roundWind, ctx.ctx.playerWind),
     ctx => new YakuhaiChecker(ctx, 32, "白"),
     ctx => new YakuhaiChecker(ctx, 33, "發"),
     ctx => new YakuhaiChecker(ctx, 34, "中"),
-    ctx => new RiichiChecker(ctx),
-    ctx => new DaburiiChecker(ctx),
 ];

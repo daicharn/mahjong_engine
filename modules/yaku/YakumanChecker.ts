@@ -17,6 +17,9 @@ export class YakumanChecker{
             { main: "国士無双13面待ち", sub: "国士無双"},
         ];
         const yaku_map: Map<string, number> = new Map();
+        if(this.context.ctx.event === WinEvent.TENHO) yaku_map.set("天和", 13);
+        if(this.context.ctx.event === WinEvent.CHIHO) yaku_map.set("地和", 13);
+
         for(const Checker of YakumanCheckers) {
             const checker = Checker(this.context);
             if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
@@ -25,9 +28,6 @@ export class YakumanChecker{
         for(const { main, sub } of excludes) {
             if(yaku_map.has(main)) yaku_map.delete(sub);
         }
-
-        if(this.context.ctx.event === WinEvent.TENHO) yaku_map.set("天和", 13);
-        if(this.context.ctx.event === WinEvent.CHIHO) yaku_map.set("地和", 13);
 
         return yaku_map;
     }
