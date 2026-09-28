@@ -65,6 +65,11 @@ export const cases1 = [
     expected: 1
   },
   {
+    name: "shanten1_4",
+    hais: [1,2,3,4,5,6,7,28,28,31,31,32,32],
+    expected: 1
+  },
+  {
     name: "shanten2_1",
     hais: [1,1,1,2,5,11,12,12,13,14,15,17,18],
     expected: 2

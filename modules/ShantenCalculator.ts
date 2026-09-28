@@ -27,7 +27,8 @@ export class ShantenCalculator {
         taatsuCount: number,
         toitsuCount: number,
     ): number {
-        const usableTaatsu = Math.min(taatsuCount, Math.max(0, requiredMentsuCount - mentsuCount));
+        const usableToitsu = Math.max(toitsuCount - 1, 0);
+        const usableTaatsu = Math.min(taatsuCount + usableToitsu, Math.max(0, requiredMentsuCount - mentsuCount));
         const usableJanto = Math.min(toitsuCount, 1);
         return 8 - 2 * (4 - requiredMentsuCount + mentsuCount) - usableTaatsu - usableJanto;
     }
