@@ -102,13 +102,15 @@ export class FuCalculator{
         if(special) return [special];
 
         const analyzer = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds);
-
-        return [
+        const detail: FuDetail[] = [
             ...this.calcBaseFu(),
             ...this.calcMachuFu(),
             ...this.calcJantoFu(analyzer),
             ...this.calcMentsuFu(analyzer),
-        ];
+        ]
+        const hasBonusFu = detail.reduce((sum, current) => sum + current.fu, 0) !== 20;
+        if(this.yaku.has("平和") || hasBonusFu) return detail;
+        else return [new FuDetail("喰い平和", 30)];
     }
 
     private calcMachiType(): Map<MachiType, BlockHais>{

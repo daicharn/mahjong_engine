@@ -39,6 +39,69 @@ export const caseFu: TehaiCase<FuSpec[][]>[] = [
     ] as FuSpec[][]
   },
   {
+    name: "kuipinfu_1",
+    desc: "喰い平和",
+    agariHai: 12,
+    isTsumo: false,
+    melds: [
+      {hai: 1, type: MeldType.CHI},
+      {hai: 4, type: MeldType.CHI},
+      {hai: 7, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [12,13,14,16,16],
+    expected: [
+      [{name: "喰い平和", fu: 30}]
+    ] as FuSpec[][]
+  },
+  {
+    name: "kuipinfu_2",
+    desc: "喰い平和",
+    agariHai: 12,
+    isTsumo: false,
+    kuitan: true,
+    melds: [
+      {hai: 2, type: MeldType.CHI},
+      {hai: 4, type: MeldType.CHI},
+      {hai: 6, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [12,13,14,16,16],
+    expected: [
+      [{name: "喰い平和", fu: 30}]
+    ] as FuSpec[][]
+  },
+  {
+    name: "kuipinfu_3",
+    desc: "喰い平和",
+    agariHai: 18,
+    isTsumo: false,
+    kuitan: true,
+    melds: [
+      {hai: 1, type: MeldType.CHI},
+      {hai: 7, type: MeldType.CHI},
+      {hai: 10, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [16,17,18,27,27],
+    expected: [
+      [{name: "喰い平和", fu: 30}]
+    ] as FuSpec[][]
+  },
+  {
+    name: "kuipinfu_4",
+    desc: "喰い平和",
+    agariHai: 18,
+    isTsumo: false,
+    kuitan: true,
+    melds: [
+      {hai: 1, type: MeldType.CHI},
+      {hai: 7, type: MeldType.CHI},
+      {hai: 10, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [16,17,18,29,29],
+    expected: [
+      [{name: "喰い平和", fu: 30}]
+    ] as FuSpec[][]
+  },
+  {
     name: "machi_tanki",
     desc: "待ちの形",
     agariHai: 13,
