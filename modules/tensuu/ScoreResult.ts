@@ -1,6 +1,15 @@
 import { FuDetail } from "./FuDetail.js";
 import { TensuuResult } from "./TensuuResult.js";
 
+interface ScoreDetails {
+    han: number,
+    fuBasic: number,
+    fuCeiled: number,
+    tensuu: TensuuResult,
+    hanName: string,
+    fuDetail: FuDetail[]
+}
+
 export class ScoreResult{
     public readonly han: number;
     public readonly fuBasic: number;
@@ -9,19 +18,13 @@ export class ScoreResult{
     public readonly hanName: string;
     public readonly fuDetail: FuDetail[];
 
-    constructor(
-        han: number,
-        fuBasic: number,
-        fuCeiled: number,
-        tensuu: TensuuResult,
-        hanName: string,
-        fuDetail: FuDetail[]
-    ){
-        this.han = han;
-        this.fuBasic = fuBasic;
-        this.fuCeiled = fuCeiled;
-        this.tensuu = tensuu;
-        this.hanName = hanName;
-        this.fuDetail = fuDetail;
+    constructor(details: ScoreDetails)
+    {
+        this.han = details.han;
+        this.fuBasic = details.fuBasic;
+        this.fuCeiled = details.fuCeiled;
+        this.tensuu = details.tensuu;
+        this.hanName = details.hanName;
+        this.fuDetail = details.fuDetail;
     }
 }
