@@ -43,6 +43,13 @@ export class ScoreResolver{
         const fuCeiled = this.ceilFusuu(fuBasic);
         const hanName = this.getHanName(han);
         const tensuu = TensuuCalculator.calcTensuu(han, fuCeiled);
-        return new ScoreResult(han, fuBasic, fuCeiled, tensuu, hanName, fuDetail);
+        return new ScoreResult({
+            han: han, 
+            fuBasic: fuBasic,
+            fuCeiled: fuCeiled,
+            tensuu: tensuu,
+            hanName: hanName,
+            fuDetail: fuDetail
+        });
     }
 }
