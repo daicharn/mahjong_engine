@@ -1,5 +1,7 @@
 import { Hai } from '../modules/Hai';
-import { cases1 } from './shanten/test1';
+import { casesNormal } from './shanten/normal';
+import { casesChitoi } from './shanten/chitoitsu';
+import { casesKokushi } from './shanten/kokushi';
 import { ShantenCalculator } from '../modules/ShantenCalculator';
 
 type ShantenCase = {
@@ -9,7 +11,9 @@ type ShantenCase = {
 };
 
 const testcases: Map<string, ShantenCase[]> = new Map();
-testcases.set("case1", cases1);
+testcases.set("normal", casesNormal);
+testcases.set("chitoitsu", casesChitoi);
+testcases.set("kokushi", casesKokushi);
 
 testcases.forEach((value, key) => {
     describe(key, () => {

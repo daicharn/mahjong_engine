@@ -1,4 +1,4 @@
-export const cases1 = [
+export const casesNormal = [
   {
     name: "naki_1_1",
     hais: [1,2,3,4,5,6,7,8,10,11],
@@ -70,6 +70,11 @@ export const cases1 = [
     expected: 1
   },
   {
+    name: "shanten1_5",
+    hais: [1,1,1,1,4,4,4,4,7,7,7,7,9],
+    expected: 1
+  },
+  {
     name: "shanten2_1",
     hais: [1,1,1,2,5,11,12,12,13,14,15,17,18],
     expected: 2
@@ -108,35 +113,5 @@ export const cases1 = [
     name: "shanten6_3",
     hais: [1,4,8,11,14,17,22,27,28,29,30,32,33],
     expected: 6
-  },
-  {
-    name: "chitoi_1",
-    hais: [1,1,4,4,9,9,13,13,17,17,21,21,28,28],
-    expected: -1
-  },
-  {
-    name: "chitoi_2",
-    hais: [1,1,4,4,9,9,13,13,17,17,21,21,28],
-    expected: 0
-  },
-  {
-    name: "kokushi_1",
-    hais: [1,9,10,18,19,27,28,29,30,31,32,33,34],
-    expected: 0
-  },
-  {
-    name: "kokushi_2",
-    hais: [1,9,10,10,19,27,28,29,30,31,32,33,34],
-    expected: 0
-  },
-  {
-    name: "kokushi_3",
-    hais: [1,9,10,17,19,27,28,29,30,31,32,33,34],
-    expected: 1
-  },
-  {
-    name: "kokushi_4",
-    hais: [1,9,10,10,10,27,28,29,30,31,32,33,34],
-    expected: 1
-  },
+  }
 ]
