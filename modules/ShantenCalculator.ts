@@ -41,7 +41,7 @@ export class ShantenCalculator {
         return new BlockDivider(this.hais).divide().length > 0;
     }
 
-    private calculateNormal(): number {
+    public calculateNormal(): number {
         if(this.isAgari()) return -1;
         if(this.isTenpai()) return 0;
 
@@ -123,13 +123,13 @@ export class ShantenCalculator {
         return minShanten;
     }
     
-    private calculateChitoitsu(): number {
+    public calculateChitoitsu(): number {
         const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
-        const toitsuCount = haiNumsSet.filter(n => this.counts[n - 1] === 2).length;
-        return 6 - toitsuCount;
+        const toitsuCount = haiNumsSet.filter(n => this.counts[n - 1] >= 2).length;
+        return 6 - toitsuCount + Math.max(0, 7 - haiNumsSet.length);
     }
 
-    private calculateKokushi(): number {
+    public calculateKokushi(): number {
         const yaochuHais = this.hais.filter(h => h.isYaochuHai());
         const hasToitsu = yaochuHais.some(h => this.counts[h.getId() - 1] >= 2);
         const yaochuCount = [...new Set(yaochuHais.map(h => h.getId()))].length;
