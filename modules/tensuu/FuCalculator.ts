@@ -2,6 +2,7 @@ import { BlockHais } from '../BlockHais.js';
 import { BlockType, MachiType, MeldType } from '../MahjongConsts.js';
 import { MentsuAnalyzer } from '../MentsuAnalyzer.js';
 import { YakuContext } from '../yaku/YakuContext.js';
+import { YakuDetails } from '../yaku/YakuDetails.js';
 import { FuDetail } from './FuDetail.js';
 
 type MentsuFuSpec = {
@@ -30,9 +31,9 @@ const MENTSU_FU_TABLE: Record<string, MentsuFuSpec> = {
 
 export class FuCalculator{
     private readonly context: YakuContext;
-    private readonly yaku: Map<string, number>;
+    private readonly yaku: YakuDetails;
 
-    constructor(context: YakuContext, yaku: Map<string, number>){
+    constructor(context: YakuContext, yaku: YakuDetails){
         this.context = context;
         this.yaku = yaku;
     }

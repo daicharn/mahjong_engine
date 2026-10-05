@@ -3,17 +3,14 @@ import { TensuuCalculator } from './TensuuCalculator.js';
 import { FuCalculator } from './FuCalculator.js';
 import { FuDetail } from './FuDetail.js';
 import { ScoreResult } from './ScoreResult.js';
+import { YakuDetails } from '../yaku/YakuDetails.js';
 
 export class ScoreResolver{
     private readonly context: YakuContext;
-    private readonly yaku: Map<string, number>;
-    constructor(context: YakuContext, yaku: Map<string, number>){
+    private readonly yaku: YakuDetails;
+    constructor(context: YakuContext, yaku: YakuDetails){
         this.context = context;
         this.yaku = yaku;
-    }
-
-    private calcHonsuu(): number{
-        return [...this.yaku.values()].reduce((sum, val) => sum + val, 0);
     }
 
     private countFusuu(detail: FuDetail[]): number{
@@ -37,7 +34,7 @@ export class ScoreResolver{
     }
 
     resolve(){
-        const han = this.calcHonsuu();
+        const han = this.yaku.calcHonsuu();
         const fuDetail = new FuCalculator(this.context, this.yaku).calcFu();
         const fuBasic = this.countFusuu(fuDetail);
         const fuCeiled = this.ceilFusuu(fuBasic);
