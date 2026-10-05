@@ -1,4 +1,4 @@
-import { YakuDetail } from "./YakuDetail";
+import { YakuDetail } from "./YakuDetail.js";
 
 export class YakuDetails{
     private details: YakuDetail[];
