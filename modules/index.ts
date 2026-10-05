@@ -14,5 +14,7 @@ export { ScoreResult } from './tensuu/ScoreResult.js';
 export { MachiCalculator } from './MachiCalculator.js';
 export { BlockHaisList } from './BlockHaisList.js';
 export { ShantenCalculator } from './ShantenCalculator.js';
+export { YakuDetail } from './yaku/YakuDetail.js';
+export { YakuDetails } from './yaku/YakuDetails.js';
 export * from './MahjongConsts.js';
 export type * from './tileDefs.js';
