@@ -283,10 +283,26 @@ export const caseNum: TensuuNumCase[] = [
     expected: new TensuuResult(8000, 48000, 32000, 16000, {oya:16000, ko:8000})
   },
   {
+    name: "hon13",
+    desc: "13翻",
+    honsuu: 13,
+    fusuu: 20,
+    isYakuman: true,
+    expected: new TensuuResult(8000, 48000, 32000, 16000, {oya:16000, ko:8000})
+  },
+  {
     name: "hon26",
     desc: "26翻",
     honsuu: 26,
     fusuu: 20,
+    expected: new TensuuResult(8000, 48000, 32000, 16000, {oya:16000, ko:8000})
+  },
+  {
+    name: "hon26",
+    desc: "26翻",
+    honsuu: 26,
+    fusuu: 20,
+    isYakuman: true,
     expected: new TensuuResult(16000, 96000, 64000, 32000, {oya:32000, ko:16000})
   },
   {
@@ -294,6 +310,7 @@ export const caseNum: TensuuNumCase[] = [
     desc: "39翻",
     honsuu: 39,
     fusuu: 20,
+    isYakuman: true,
     expected: new TensuuResult(24000, 144000, 96000, 48000, {oya:48000, ko:24000})
   },
   {
@@ -301,6 +318,7 @@ export const caseNum: TensuuNumCase[] = [
     desc: "52翻",
     honsuu: 52,
     fusuu: 20,
+    isYakuman: true,
     expected: new TensuuResult(32000, 192000, 128000, 64000, {oya:64000, ko:32000})
   },
   {
@@ -308,6 +326,7 @@ export const caseNum: TensuuNumCase[] = [
     desc: "65翻",
     honsuu: 65,
     fusuu: 20,
+    isYakuman: true,
     expected: new TensuuResult(40000, 240000, 160000, 80000, {oya:80000, ko:40000})
   },
   {
@@ -315,6 +334,7 @@ export const caseNum: TensuuNumCase[] = [
     desc: "78翻",
     honsuu: 78,
     fusuu: 20,
+    isYakuman: true,
     expected: new TensuuResult(48000, 288000, 192000, 96000, {oya:96000, ko:48000})
   },
 ];
