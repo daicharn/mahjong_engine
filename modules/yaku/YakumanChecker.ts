@@ -1,5 +1,7 @@
 import { WinEvent } from '../MahjongConsts.js';
 import { YakuContext } from './YakuContext.js';
+import { YakuDetail } from './YakuDetail.js';
+import { YakuDetails } from './YakuDetails.js';
 import { YakumanCheckers } from './index.js';
 
 export class YakumanChecker{
@@ -10,25 +12,25 @@ export class YakumanChecker{
     }
 
     //役判定
-    check(): Map<string, number> {
+    check(): YakuDetails {
         const excludes = [
             { main: "純正九蓮宝燈", sub: "九蓮宝燈"},
             { main: "四暗刻単騎", sub: "四暗刻"},
             { main: "国士無双13面待ち", sub: "国士無双"},
         ];
-        const yaku_map: Map<string, number> = new Map();
-        if(this.context.ctx.event === WinEvent.TENHO) yaku_map.set("天和", 13);
-        if(this.context.ctx.event === WinEvent.CHIHO) yaku_map.set("地和", 13);
+        const yakuDetails: YakuDetails = new YakuDetails();
+        if(this.context.ctx.event === WinEvent.TENHO) yakuDetails.add("天和", 13, true);
+        if(this.context.ctx.event === WinEvent.CHIHO) yakuDetails.add("地和", 13, true);
 
         for(const Checker of YakumanCheckers) {
             const checker = Checker(this.context);
-            if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
+            if(checker.check()) yakuDetails.add(checker.getName(), checker.getHan(), true);
         }
 
         for(const { main, sub } of excludes) {
-            if(yaku_map.has(main)) yaku_map.delete(sub);
+            if(yakuDetails.has(main)) yakuDetails.delete(sub);
         }
 
-        return yaku_map;
+        return yakuDetails;
     }
 }
