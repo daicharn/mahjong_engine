@@ -8,7 +8,7 @@ caseNum.forEach(casenum => testcases.push(casenum));
 testcases.forEach(testcase => {
     describe(testcase.desc, () => {
         test(testcase.name, () => {
-            const expected = TensuuCalculator.calcTensuu(testcase.honsuu, testcase.fusuu);
+            const expected = TensuuCalculator.calcTensuu(testcase.honsuu, testcase.fusuu, testcase.isYakuman ?? false);
             expect(testcase.expected).toEqual(expected);
         });
     });

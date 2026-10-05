@@ -37,7 +37,8 @@ export type TensuuNumCase = {
     name: string,
     desc: string,
     honsuu: number,
-    fusuu: number
+    fusuu: number,
+    isYakuman?: boolean,
     expected: TensuuResult;
 }
 
@@ -45,6 +46,7 @@ export type hanNameCase = {
     name: string,
     desc: string,
     han: number,
+    isYakuman: boolean,
     expected: string
 }
 

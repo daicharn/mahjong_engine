@@ -1,6 +1,7 @@
 import { hanNameCase } from "./testConsts";
 import { casesHanName } from './tensuu/hanName';
 import { BlockHaisList, Hai, PlayerContext, PlayerHand, ScoreResolver, TILE, YakuContext } from "../modules";
+import { YakuDetails } from "../modules/yaku/YakuDetails";
 
 const testcases: hanNameCase[] = casesHanName;
 
@@ -11,7 +12,7 @@ testcases.forEach(testcase => {
                 new PlayerHand([], []),
                 new PlayerContext({agariHai: new Hai(TILE.BACK), isTsumo: false, playerWind: TILE.WIND.EAST, roundWind: TILE.WIND.EAST}),
                 new BlockHaisList());
-            const result = new ScoreResolver(contextStub, new Map()).hanName(testcase.han);
+            const result = new ScoreResolver(contextStub, new YakuDetails()).hanName(testcase.han, testcase.isYakuman);
             expect(result).toEqual(testcase.expected);
         });
     });
