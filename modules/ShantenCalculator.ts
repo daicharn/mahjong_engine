@@ -33,26 +33,20 @@ export class ShantenCalculator {
         return 8 - 2 * (4 - requiredMentsuCount + mentsuCount) - usableTaatsu - usableJanto;
     }
 
-    private isTenpai(): boolean {
-        return new MachiCalculator(this.hais).calculate().length > 0;
-    }
-
-    private isAgari(): boolean {
-        return new BlockDivider(this.hais).divide().length > 0;
-    }
-
     public calculateNormal(): number {
-        if(this.isAgari()) return -1;
-        if(this.isTenpai()) return 0;
-
         let minShanten = 8;
         const requiredMentsuCount = Math.floor(this.hais.length / 3);
+        const visited = new Set<string>();
         const dfs = (
             arr: number[],
             mentsuCount: number,
             taatsuCount: number,
             toitsuCount: number,
         ) => {
+            const key = arr.join("") + `:${mentsuCount}:${taatsuCount}:${toitsuCount}`;
+            if (visited.has(key)) return;
+            visited.add(key);
+
             const firstIndex = arr.findIndex(count => count > 0);
             if(firstIndex === -1) {
                 const shanten = this.calculateShanten(
@@ -70,15 +64,15 @@ export class ShantenCalculator {
 
             //雀頭
             if(count >= 2){
-                let next = [...arr];
-                next[firstIndex] -= 2;
-                dfs(next, mentsuCount, taatsuCount, toitsuCount + 1);
+                arr[firstIndex] -= 2;
+                dfs(arr, mentsuCount, taatsuCount, toitsuCount + 1);
+                arr[firstIndex] += 2;
             }
             //刻子
             if(count >= 3){
-                let next = [...arr];
-                next[firstIndex] -= 3;
-                dfs(next, mentsuCount + 1, taatsuCount, toitsuCount);
+                arr[firstIndex] -= 3;
+                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount);
+                arr[firstIndex] += 3;
             }
             //順子
             const hasShuntsuTiles =
@@ -86,36 +80,39 @@ export class ShantenCalculator {
                 arr[firstIndex + 2] > 0;
             const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
             if(isShuntsuCandidate && hasShuntsuTiles){
-                let next = [...arr];
-                next[firstIndex]--;
-                next[firstIndex + 1]--;
-                next[firstIndex + 2]--;
-                dfs(next, mentsuCount + 1, taatsuCount, toitsuCount);
+                arr[firstIndex]--;
+                arr[firstIndex + 1]--;
+                arr[firstIndex + 2]--;
+                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount);
+                arr[firstIndex]++;
+                arr[firstIndex + 1]++;
+                arr[firstIndex + 2]++;
             }
             //両面、辺張ターツ
             const hasRyanmenTiles = arr[firstIndex + 1] > 0;
             const isRyanmenCandidate = hai.isNumberHai() && hai.num <= 8;
             if(isRyanmenCandidate && hasRyanmenTiles){
-                let next = [...arr];
-                next[firstIndex]--;
-                next[firstIndex + 1]--;
-
-                dfs(next, mentsuCount, taatsuCount + 1, toitsuCount);
+                arr[firstIndex]--;
+                arr[firstIndex + 1]--;
+                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount);
+                arr[firstIndex]++;
+                arr[firstIndex + 1]++;
             }
             //嵌張ターツ
             const hasKanchanTiles = arr[firstIndex + 2] > 0;
             const isKanchanCandidate = hai.isNumberHai() && hai.num <= 7;
             if(isKanchanCandidate && hasKanchanTiles){
-                let next = [...arr];
-                next[firstIndex]--;
-                next[firstIndex + 2]--;
-                dfs(next, mentsuCount, taatsuCount + 1, toitsuCount);
+                arr[firstIndex]--;
+                arr[firstIndex + 2]--;
+                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount);
+                arr[firstIndex]++;
+                arr[firstIndex + 2]++;
             }
 
             //孤立牌
-            const next = [...arr];
-            next[firstIndex]--;
-            dfs(next, mentsuCount, taatsuCount, toitsuCount);
+            arr[firstIndex]--;
+            dfs(arr, mentsuCount, taatsuCount, toitsuCount);
+            arr[firstIndex]++;
         }
 
         dfs(this.counts, 0, 0, 0);

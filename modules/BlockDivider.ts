@@ -57,10 +57,15 @@ export class BlockDivider{
         const blockhaislist: BlockHaisList = new BlockHaisList();
         const counts: number[] = new Array(PAI_TYPE_NUM).fill(0);
         this.hais.forEach(h => counts[h.getId() - 1]++);
+        const visited = new Set<string>();
 
         if(this.hais.length > 14) return results;
 
         const dfs = (arr: number[], blocks: BlockHaisList) => {
+            const key = arr.join("") + `:` + blocks.blockToString();
+            if (visited.has(key)) return;
+            visited.add(key);
+
             const expectedBlocks = Math.floor(this.hais.length / 3);
 
             if(blocks.length() === expectedBlocks + 1 && blocks.isStandardHand(expectedBlocks)){
@@ -76,12 +81,13 @@ export class BlockDivider{
 
             //刻子の処理
             if(count >= 3){
-                let next = [...arr];
-                next[firstIndex] -= 3;
+                arr[firstIndex] -= 3;
 
                 blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
-                dfs(next, blocks);
+                dfs(arr, blocks);
                 blocks.pop();
+
+                arr[firstIndex] += 3;
             }
             //順子の処理
             const hasTiles =
@@ -92,14 +98,17 @@ export class BlockDivider{
                 const h2 = new Hai(firstIndex + 2);
                 const h3 = new Hai(firstIndex + 3);
 
-                let next = [...arr];
-                next[firstIndex]--;
-                next[firstIndex + 1]--;
-                next[firstIndex + 2]--;
+                arr[firstIndex]--;
+                arr[firstIndex + 1]--;
+                arr[firstIndex + 2]--;
 
                 blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
-                dfs(next, blocks);
+                dfs(arr, blocks);
                 blocks.pop();
+
+                arr[firstIndex]++;
+                arr[firstIndex + 1]++;
+                arr[firstIndex + 2]++;
             }
         };
 
