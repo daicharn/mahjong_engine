@@ -53,7 +53,7 @@ export type hanNameCase = {
 export type UkeireCase = {
     name: string,
     haiNum: number[],
-    NoSpecial: boolean,
+    noSpecial: boolean,
     expected: number[]
 }
 
