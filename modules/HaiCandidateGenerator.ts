@@ -1,5 +1,5 @@
-import { Hai } from "./Hai";
-import { PAI_TYPE_NUM } from "./MahjongConsts";
+import { Hai } from "./Hai.js";
+import { PAI_TYPE_NUM } from "./MahjongConsts.js";
 
 export class HaiCandidateGenerator {
     private readonly hais: Hai[];

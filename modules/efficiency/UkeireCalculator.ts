@@ -1,8 +1,8 @@
-import { Hai } from "../Hai";
-import { HaiCandidateGenerator } from "../HaiCandidateGenerator";
-import { PAI_TYPE_NUM } from "../MahjongConsts";
-import { ShantenCalculator } from "../ShantenCalculator";
-import { UkeireDetail } from "./UkeireDetail";
+import { Hai } from "../Hai.js";
+import { HaiCandidateGenerator } from "../HaiCandidateGenerator.js";
+import { PAI_TYPE_NUM } from "../MahjongConsts.js";
+import { ShantenCalculator } from "../ShantenCalculator.js";
+import { UkeireDetail } from "./UkeireDetail.js";
 
 export class UkeireCalculator {
     private readonly hais: Hai[];
