@@ -25,9 +25,7 @@ export class UkeireCalculator {
         const counts: number[] = new Array(PAI_TYPE_NUM).fill(0);
         this.hais.forEach(h => counts[h.getId() - 1]++);
         const currentShanten = this.calcShanten(this.hais);
-        const tiles = this.noSpecial
-            ? new HaiCandidateGenerator(this.hais, 2).calculate()
-            : HaiCandidateGenerator.generateAll();
+        const tiles = new HaiCandidateGenerator(this.hais, 2, this.noSpecial).calculate()
         const details: UkeireDetail[] = [];
         for(const tile of tiles){
             const remaining = 4 - counts[tile - 1];

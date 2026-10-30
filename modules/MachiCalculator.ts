@@ -12,7 +12,7 @@ export class MachiCalculator{
 
     calculate(): number[] {
         const machi: number[] = [];
-        const candidate: number[] = new HaiCandidateGenerator(this.hais, 1).calculate();
+        const candidate: number[] = new HaiCandidateGenerator(this.hais, 1, false).calculate();
 
         for(const haiId of candidate){
             const testhais = [...this.hais, new Hai(haiId)];

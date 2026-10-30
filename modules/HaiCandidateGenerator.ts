@@ -1,13 +1,16 @@
 import { Hai } from "./Hai.js";
 import { PAI_TYPE_NUM } from "./MahjongConsts.js";
+import { ShantenCalculator } from "./ShantenCalculator.js";
 
 export class HaiCandidateGenerator {
     private readonly hais: Hai[];
     private readonly distance: 1 | 2;
+    private readonly noSpecial: boolean;
 
-    constructor(hais: Hai[], distance: 1 | 2){
+    constructor(hais: Hai[], distance: 1 | 2, noSpecial: boolean){
         this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
         this.distance = distance;
+        this.noSpecial = noSpecial;
     }
 
     static generateAll(){
@@ -44,10 +47,11 @@ export class HaiCandidateGenerator {
     }
 
     calculate(): number[] {
-        const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
-        const isAllYaochu = this.hais.every(h => h.isYaochuHai());
-        // 19字牌を12種類以上持っていれば国士無双のテンパイの可能性
-        const isKokushi = isAllYaochu && haiNumsSet.length >= 12;
+        if(this.noSpecial) return this.calcCandidate(this.hais);
+        
+        const shantenNormal = new ShantenCalculator(this.hais).calculateNormal();
+        const shantenKokushi = new ShantenCalculator(this.hais).calculateKokushi();
+        const isKokushi = shantenNormal > shantenKokushi;
         const candidate: number[] = isKokushi ? this.genYaochuCandidate() : this.calcCandidate(this.hais);
 
         return candidate;
