@@ -5,12 +5,12 @@ import { ShantenCalculator } from "./ShantenCalculator.js";
 export class HaiCandidateGenerator {
     private readonly hais: Hai[];
     private readonly distance: 1 | 2;
-    private readonly noSpecial: boolean;
+    private readonly includeSpecial: boolean;
 
-    constructor(hais: Hai[], distance: 1 | 2, noSpecial: boolean){
+    constructor(hais: Hai[], distance: 1 | 2, includeSpecial: boolean){
         this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
         this.distance = distance;
-        this.noSpecial = noSpecial;
+        this.includeSpecial = includeSpecial;
     }
 
     static generateAll(){
@@ -47,7 +47,7 @@ export class HaiCandidateGenerator {
     }
 
     calculate(): number[] {
-        if(this.noSpecial) return this.calcCandidate(this.hais);
+        if(!this.includeSpecial) return this.calcCandidate(this.hais);
         
         const shantenNormal = new ShantenCalculator(this.hais).calculateNormal();
         const shantenKokushi = new ShantenCalculator(this.hais).calculateKokushi();

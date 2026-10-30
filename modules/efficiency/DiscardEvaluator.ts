@@ -18,7 +18,7 @@ export class DiscardEvaluator{
             const discardIndex = this.hais.findIndex(h => h.getId() === haiId);
             const handAfterDiscard = this.hais.filter((_, index) => index !== discardIndex);
             const shanten = new ShantenCalculator(handAfterDiscard).calculate();
-            const ukeire = new UkeireCalculator(handAfterDiscard, false).calculate();
+            const ukeire = new UkeireCalculator(handAfterDiscard, true).calculate();
 
             const ukeireCount = ukeire.reduce((sum, detail) => sum + detail.count, 0);
 

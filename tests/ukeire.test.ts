@@ -11,9 +11,9 @@ testcases.set("七対子国士あり", casesAll);
 
 testcases.forEach((value, key) => {
     describe(key, () => {
-        test.each(value)('$name', ({haiNum, noSpecial, expected}) => {
+        test.each(value)('$name', ({haiNum, includeSpecial, expected}) => {
             const hais: Hai[] = new Hais(haiNum).getHais()
-            const ukeire: UkeireDetail[] = new UkeireCalculator(hais, noSpecial).calculate();
+            const ukeire: UkeireDetail[] = new UkeireCalculator(hais, includeSpecial).calculate();
             const results = ukeire.map(detail => detail.hai);
             expect(results).toEqual(expected);
         });

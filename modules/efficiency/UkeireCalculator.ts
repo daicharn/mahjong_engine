@@ -6,26 +6,26 @@ import { UkeireDetail } from "./UkeireDetail.js";
 
 export class UkeireCalculator {
     private readonly hais: Hai[];
-    private readonly noSpecial: boolean;
+    private readonly includeSpecial: boolean;
 
-    constructor(hais: Hai[], noSpecial: boolean){
+    constructor(hais: Hai[], includeSpecial: boolean){
         this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
-        this.noSpecial = noSpecial;
+        this.includeSpecial = includeSpecial;
     }
 
     private calcShanten(hais: Hai[]): number {
         const calculator = new ShantenCalculator(hais);
 
-        return this.noSpecial
-            ? calculator.calculateNormal()
-            : calculator.calculate();
+        return this.includeSpecial
+            ? calculator.calculate()
+            : calculator.calculateNormal();
     }
 
     calculate(): UkeireDetail[]{
         const counts: number[] = new Array(PAI_TYPE_NUM).fill(0);
         this.hais.forEach(h => counts[h.getId() - 1]++);
         const currentShanten = this.calcShanten(this.hais);
-        const tiles = new HaiCandidateGenerator(this.hais, 2, this.noSpecial).calculate()
+        const tiles = new HaiCandidateGenerator(this.hais, 2, this.includeSpecial).calculate()
         const details: UkeireDetail[] = [];
         for(const tile of tiles){
             const remaining = 4 - counts[tile - 1];
