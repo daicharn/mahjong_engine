@@ -1,4 +1,4 @@
-export class DiscardEval{
+export class DiscardDetail{
     readonly haiId: number;
     readonly shanten: number;
     readonly ukeireCount: number;

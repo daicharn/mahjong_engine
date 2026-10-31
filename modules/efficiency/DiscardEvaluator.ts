@@ -1,6 +1,6 @@
 import { Hai } from "../Hai.js";
 import { ShantenCalculator } from "../ShantenCalculator.js";
-import { DiscardEval } from "./DiscardEval.js";
+import { DiscardDetail } from "./DiscardDetail.js";
 import { UkeireCalculator } from "./UkeireCalculator.js";
 
 export class DiscardEvaluator{
@@ -12,9 +12,9 @@ export class DiscardEvaluator{
         this.includeSpecial = includeSpecial;
     }
 
-    evaluate(): DiscardEval[]{
+    evaluate(): DiscardDetail[]{
         let bestShanten = Infinity;
-        const discardEvals: DiscardEval[] = [];
+        const DiscardDetails: DiscardDetail[] = [];
         const uniqueHaiIds = [...new Set(this.hais.map(h => h.getId()))];
         for(const haiId of uniqueHaiIds){
             const discardIndex = this.hais.findIndex(h => h.getId() === haiId);
@@ -28,10 +28,10 @@ export class DiscardEvaluator{
                 bestShanten = shanten;
             }
 
-            discardEvals.push(new DiscardEval(haiId, shanten, ukeireCount));
+            DiscardDetails.push(new DiscardDetail(haiId, shanten, ukeireCount));
         }
 
-        return discardEvals
+        return DiscardDetails
             .filter(ev => ev.shanten === bestShanten)
             .sort((a, b) => b.ukeireCount - a.ukeireCount);
     }
