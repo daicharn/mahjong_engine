@@ -16,5 +16,7 @@ export { BlockHaisList } from './BlockHaisList.js';
 export { ShantenCalculator } from './ShantenCalculator.js';
 export { YakuDetail } from './yaku/YakuDetail.js';
 export { YakuDetails } from './yaku/YakuDetails.js';
+export { DiscardEvaluator } from './efficiency/DiscardEvaluator.js'
+export { DiscardDetail } from './efficiency/DiscardDetail.js'
 export * from './MahjongConsts.js';
 export type * from './tileDefs.js';

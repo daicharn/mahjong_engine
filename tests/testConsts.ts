@@ -50,4 +50,11 @@ export type hanNameCase = {
     expected: string
 }
 
+export type UkeireCase = {
+    name: string,
+    haiNum: number[],
+    includeSpecial: boolean,
+    expected: number[]
+}
+
 export type Score = {han: number, fuBasic: number, fuCeiled: number};
