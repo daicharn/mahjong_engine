@@ -22,25 +22,38 @@ export class DiscardEvaluator{
 
     evaluate(): DiscardDetail[]{
         let bestShanten = Infinity;
-        const discardDetails: DiscardDetail[] = [];
+
+        const candidates: {
+            haiId: number;
+            hand: Hai[];
+            shanten: number;
+        }[] = [];
+
         const uniqueHaiIds = [...new Set(this.hais.map(h => h.getId()))];
         for(const haiId of uniqueHaiIds){
             const discardIndex = this.hais.findIndex(h => h.getId() === haiId);
-            const handAfterDiscard = this.hais.filter((_, index) => index !== discardIndex);
-            const shanten = this.calcShanten(handAfterDiscard);
-            const ukeire = new UkeireCalculator(handAfterDiscard, this.includeSpecial).calculate();
+            const hand = this.hais.filter((_, index) => index !== discardIndex);
+            const shanten = this.calcShanten(hand);
 
-            const ukeireCount = ukeire.reduce((sum, detail) => sum + detail.count, 0);
+            bestShanten = Math.min(bestShanten, shanten);
 
-            if(shanten < bestShanten){
-                bestShanten = shanten;
-            }
-
-            discardDetails.push(new DiscardDetail(haiId, shanten, ukeireCount, ukeire));
+            candidates.push({haiId, hand, shanten});
         }
 
-        return discardDetails
-            .filter(ev => ev.shanten === bestShanten)
+        return candidates
+            .filter(c => c.shanten === bestShanten)
+            .map(c => {
+                const ukeire = new UkeireCalculator(
+                    c.hand,
+                    this.includeSpecial,
+                    c.shanten
+                ).calculate();
+                
+                const ukeireCount = ukeire.reduce((sum, detail) => sum + detail.count, 0);
+
+                return new DiscardDetail(c.haiId, c.shanten, ukeireCount, ukeire);
+            })
             .sort((a, b) => b.ukeireCount - a.ukeireCount);
+
     }
 }

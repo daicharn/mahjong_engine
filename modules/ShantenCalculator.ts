@@ -1,6 +1,4 @@
-import { BlockDivider } from "./BlockDivider.js";
 import { Hai } from "./Hai.js";
-import { MachiCalculator } from "./MachiCalculator.js";
 import { PAI_TYPE_NUM } from "./MahjongConsts.js";
 
 export class ShantenCalculator {
@@ -19,6 +17,18 @@ export class ShantenCalculator {
         const kokushi = this.calculateKokushi();
 
         return Math.min(normal, chitoi, kokushi);
+    }
+
+    private encodeCounts(counts: number[]): [number, number] {
+        let low = 0;
+        let high = 0;
+
+        for (let i = 0; i < 17; i++) {
+            low = low * 5 + counts[i];
+            high = high * 5 + counts[i + (PAI_TYPE_NUM / 2)];
+        }
+
+        return [low, high];
     }
 
     private calculateShanten(
@@ -42,13 +52,13 @@ export class ShantenCalculator {
             mentsuCount: number,
             taatsuCount: number,
             toitsuCount: number,
+            startIndex: number
         ) => {
-            const key = arr.join("") + `:${mentsuCount}:${taatsuCount}:${toitsuCount}`;
-            if (visited.has(key)) return;
-            visited.add(key);
+            let firstIndex = startIndex;
 
-            const firstIndex = arr.findIndex(count => count > 0);
-            if(firstIndex === -1) {
+            while(firstIndex < PAI_TYPE_NUM && arr[firstIndex] === 0) firstIndex++;
+
+            if(firstIndex === PAI_TYPE_NUM) {
                 const shanten = this.calculateShanten(
                     requiredMentsuCount,
                     mentsuCount,
@@ -59,63 +69,68 @@ export class ShantenCalculator {
                 return;
             }
 
+            const key = this.encodeCounts(arr).toString() + `:${mentsuCount}:${taatsuCount}:${toitsuCount}`;
+            if (visited.has(key)) return;
+            visited.add(key);
+
             const count = arr[firstIndex];
-            const hai = new Hai(firstIndex + 1);
+            const isNumberHai = firstIndex < 27;
+            const num = firstIndex % 9 + 1;
+
+            const canShuntsu = isNumberHai && num <= 7;
+            const canRyanmen = isNumberHai && num <= 8;
 
             //雀頭
             if(count >= 2){
                 arr[firstIndex] -= 2;
-                dfs(arr, mentsuCount, taatsuCount, toitsuCount + 1);
+                dfs(arr, mentsuCount, taatsuCount, toitsuCount + 1, firstIndex);
                 arr[firstIndex] += 2;
             }
             //刻子
             if(count >= 3){
                 arr[firstIndex] -= 3;
-                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount);
+                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount, firstIndex);
                 arr[firstIndex] += 3;
             }
             //順子
             const hasShuntsuTiles =
                 arr[firstIndex + 1] > 0 &&
                 arr[firstIndex + 2] > 0;
-            const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
-            if(isShuntsuCandidate && hasShuntsuTiles){
+            if(canShuntsu && hasShuntsuTiles){
                 arr[firstIndex]--;
                 arr[firstIndex + 1]--;
                 arr[firstIndex + 2]--;
-                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount);
+                dfs(arr, mentsuCount + 1, taatsuCount, toitsuCount, firstIndex);
                 arr[firstIndex]++;
                 arr[firstIndex + 1]++;
                 arr[firstIndex + 2]++;
             }
             //両面、辺張ターツ
             const hasRyanmenTiles = arr[firstIndex + 1] > 0;
-            const isRyanmenCandidate = hai.isNumberHai() && hai.num <= 8;
-            if(isRyanmenCandidate && hasRyanmenTiles){
+            if(canRyanmen && hasRyanmenTiles){
                 arr[firstIndex]--;
                 arr[firstIndex + 1]--;
-                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount);
+                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount, firstIndex);
                 arr[firstIndex]++;
                 arr[firstIndex + 1]++;
             }
             //嵌張ターツ
             const hasKanchanTiles = arr[firstIndex + 2] > 0;
-            const isKanchanCandidate = hai.isNumberHai() && hai.num <= 7;
-            if(isKanchanCandidate && hasKanchanTiles){
+            if(canShuntsu && hasKanchanTiles){
                 arr[firstIndex]--;
                 arr[firstIndex + 2]--;
-                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount);
+                dfs(arr, mentsuCount, taatsuCount + 1, toitsuCount, firstIndex);
                 arr[firstIndex]++;
                 arr[firstIndex + 2]++;
             }
 
             //孤立牌
             arr[firstIndex]--;
-            dfs(arr, mentsuCount, taatsuCount, toitsuCount);
+            dfs(arr, mentsuCount, taatsuCount, toitsuCount, firstIndex);
             arr[firstIndex]++;
         }
 
-        dfs(this.counts, 0, 0, 0);
+        dfs(this.counts, 0, 0, 0, 0);
 
         return minShanten;
     }
